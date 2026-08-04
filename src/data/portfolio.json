@@ -37,14 +37,13 @@
       "description": "Plataforma Mobile HealthTech diseñada para conectar pacientes y nutricionistas de manera estratégica.",
       "fullDescription": "Plataforma Mobile HealthTech diseñada para conectar pacientes y nutricionistas de manera estratégica, incluyendo un sistema avanzado de análisis y sugerencias mediante IA.",
       "role": "Desarrollo Backend (Node.js)",
-      "image": "https://via.placeholder.com/600x400/eeeeee/333333?text=Nutrium+Platform",
-      "video": "/video_nutrim.mp4",
+      "video": "/mockup.mp4",
       "mockups": [
-        "https://via.placeholder.com/600x400/eeeeee/333333?text=Mockup+1",
-        "https://via.placeholder.com/600x400/eeeeee/333333?text=Mockup+2"
+        "/nutrium.jpg",
+        "/nutrim1.jpg"
       ],
-      "url": "https://example.com/nutrium",
-      "github": ""
+      "url": "",
+      "github": "https://github.com/IgrowkerTraining/i006-nutrium-fullstack"
     }
   ],
   "skills": [

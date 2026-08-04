@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import portfolioData from '../data/portfolio.json';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    setCurrentImageIndex(0);
+  }, [slug]);
 
   const project = portfolioData.projects.find(p => p.slug === slug);
 
@@ -128,10 +130,10 @@ const ProjectDetail = () => {
             loop
             playsInline
             controls
-            style={{ 
-              width: '100%', 
-              borderRadius: '12px', 
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', 
+            style={{
+              width: '100%',
+              borderRadius: '12px',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
               border: '1px solid var(--color-border)',
               backgroundColor: 'var(--color-bg-subtle)'
             }}
@@ -142,28 +144,64 @@ const ProjectDetail = () => {
       {project.mockups && project.mockups.length > 0 && (
         <div style={{ marginBottom: '2rem' }}>
           <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-text)' }}>Galería</h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
-          }}>
-            {project.mockups.map((mockup, i) => (
-              <img
-                key={i}
-                src={mockup}
-                alt={`Mockup ${i + 1} de ${project.name}`}
-                style={{
-                  width: '100%',
-                  borderRadius: '8px',
-                  border: '1px solid var(--color-border)',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-                  transition: 'transform 0.2s ease',
-                }}
-                onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-              />
-            ))}
-          </div>
+          {project.mockups.length === 1 ? (
+            <img
+              src={project.mockups[0]}
+              alt={`Mockup 1 de ${project.name}`}
+              style={{
+                width: '100%',
+                borderRadius: '8px',
+                border: '1px solid var(--color-border)',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+              }}
+            />
+          ) : (
+            <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div style={{ width: '100%', overflow: 'hidden', paddingBottom: '10px' }}>
+                <div style={{
+                  display: 'flex',
+                  gap: '10px',
+                  transition: 'transform 0.5s ease-in-out',
+                  transform: `translateX(calc(-${currentImageIndex * 100}% - ${currentImageIndex * 10}px))`
+                }}>
+                  {project.mockups.map((mockup, i) => (
+                    <img
+                      key={i}
+                      src={mockup}
+                      alt={`Mockup ${i + 1} de ${project.name}`}
+                      style={{
+                        width: '100%',
+                        flexShrink: 0,
+                        objectFit: 'cover',
+                        borderRadius: '8px',
+                        border: '1px solid var(--color-border)',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '0.8rem', marginTop: '0.5rem', justifyContent: 'center' }}>
+                {project.mockups.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentImageIndex(i)}
+                    style={{
+                      width: '16px',
+                      height: '16px',
+                      borderRadius: '50%',
+                      padding: 0,
+                      border: '2px solid #9ca3af',
+                      backgroundColor: currentImageIndex === i ? '#9ca3af' : 'transparent',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.3s ease'
+                    }}
+                    aria-label={`Ir a la imagen ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </article>
