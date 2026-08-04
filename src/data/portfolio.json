@@ -1,0 +1,82 @@
+{
+  "personal": {
+    "name": "Emanuel Enriquez",
+    "title": "Full Stack Developer con más de 1.5 años de experiencia",
+    "location": "Argentina",
+    "avatar": "/foto.png",
+    "email": "emaenriquez1985@gmail.com",
+    "linkedin": "https://linkedin.com/in/emaenriquez",
+    "github": "https://github.com/emaenriquez"
+  },
+  "about": "Soy Desarrollador Full Stack Me apasiona construir soluciones digitales robustas conectando bases de datos complejas con interfaces eficientes y centradas en el usuario. A lo largo de mi recorrido, me he especializado en tecnologías tanto del lado del cliente (React.js, Next.js, TypeScript) como del servidor (Node.js, NestJS, bases de datos SQL y NoSQL). No solo escribo código limpio; me enfoco en entender la arquitectura completa del producto, participando en la creación de MVPs complejos y la integración de motores de Inteligencia Artificial. Me adapto rápido, trabajo bajo metodologías ágiles (Scrum) y me motiva asumir desafíos donde pueda aportar valor técnico y visual desde el primer día.",
+  "experience": [
+    {
+      "company": "TechX",
+      "role": "Desarrollador Full Stack",
+      "dates": "Junio 2025 - Presente",
+      "description": "Participo en la construcción y mantenimiento de soluciones web end-to-end para clientes internacionales. Trabajo bajo metodologías ágiles junto a equipos de IA, QA y Diseño. - Logros destacados: Desarrollo de módulos para un sistema OCR asistido por IA (procesamiento y renderizado de datos JSON), creación de una plataforma interna de analítica (KPIs) para Team Leaders, y mantenimiento Full Stack asegurando la alta disponibilidad y resolución de bugs críticos."
+    },
+    {
+      "company": "Silman Digital",
+      "role": "Desarrollador web",
+      "dates": "Junio 2025 - Agosto 2025",
+      "description": "Creación, actualización y mantenimiento de sitios web. Trabajé en la personalización de temas, estructuración de contenido y mejoras visuales para optimizar la presencia digital de los clientes."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Tecnicatura en Desarrollo de Software | UNCUYO",
+      "degree": "Tecnico en desarrollo de Software",
+      "dates": "agosto 2023 - julio 2026"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Nutrium Platform (HealthTech & IA)",
+      "slug": "nutrium-platform",
+      "description": "Plataforma Mobile HealthTech diseñada para conectar pacientes y nutricionistas de manera estratégica.",
+      "fullDescription": "Plataforma Mobile HealthTech diseñada para conectar pacientes y nutricionistas de manera estratégica, incluyendo un sistema avanzado de análisis y sugerencias mediante IA.",
+      "role": "Desarrollo Backend (Node.js)",
+      "image": "https://via.placeholder.com/600x400/eeeeee/333333?text=Nutrium+Platform",
+      "video": "/video_nutrim.mp4",
+      "mockups": [
+        "https://via.placeholder.com/600x400/eeeeee/333333?text=Mockup+1",
+        "https://via.placeholder.com/600x400/eeeeee/333333?text=Mockup+2"
+      ],
+      "url": "https://example.com/nutrium",
+      "github": ""
+    }
+  ],
+  "skills": [
+    {
+      "category": "Frontend",
+      "items": [
+        "React.js",
+        "Next.js",
+        "TypeScript",
+        "JavaScript",
+        "Tailwind CSS",
+        "HTML/CSS"
+      ]
+    },
+    {
+      "category": "Backend & Bases de Datos",
+      "items": [
+        "Node.js",
+        "NestJS",
+        "PostgreSQL",
+        "MongoDB",
+        "Python"
+      ]
+    },
+    {
+      "category": "Herramientas & Metodologías",
+      "items": [
+        "Integración de APIs e IA",
+        "Prompt Engineering",
+        "Git/GitHub",
+        "Metodologías Ágiles (Scrum)"
+      ]
+    }
+  ]
+}
