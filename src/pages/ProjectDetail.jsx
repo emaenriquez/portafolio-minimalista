@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import portfolioData from '../data/portfolio.json';
+import useReveal from '../hooks/useReveal';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const revealRef = useReveal();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,193 +20,133 @@ const ProjectDetail = () => {
   }
 
   return (
-    <article className="fade-in-up" style={{ padding: '4rem 0', maxWidth: '800px', margin: '0 auto' }}>
-      <Link
-        to="/"
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          marginBottom: '2.5rem',
-          fontSize: '0.9rem',
-          fontWeight: 500,
-          color: 'var(--color-text-muted)',
-          textDecoration: 'none',
-          padding: '0.5rem 1rem',
-          borderRadius: '8px',
-          background: '#f9fafb',
-          border: '1px solid var(--color-border)'
-        }}
-      >
-        <span>&larr;</span> Volver al inicio
-      </Link>
+    <div ref={revealRef}>
+      <article className="project-detail page-enter">
+        <Link to="/projects" className="project-detail-back reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Volver a proyectos
+        </Link>
 
-      <header style={{ marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-          <h1 style={{ margin: 0, border: 'none', padding: 0, fontSize: '3rem', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-            {project.name}
-          </h1>
+        <header className="reveal" style={{ marginBottom: '2.5rem' }}>
+          <h1 className="project-detail-title">{project.name}</h1>
+
           {project.role && (
-            <span style={{
-              display: 'inline-block',
-              fontWeight: 600,
-              fontSize: '0.85rem',
-              color: 'var(--color-primary)',
-              background: '#f3f4f6',
-              padding: '0.4rem 0.8rem',
-              borderRadius: '20px',
-              width: 'fit-content'
-            }}>
-              {project.role}
-            </span>
+            <span className="project-detail-role">{project.role}</span>
           )}
-        </div>
 
-        <p style={{
-          fontSize: '1.2rem',
-          lineHeight: 1.6,
-          color: 'var(--color-text)',
-          maxWidth: '600px',
-          marginBottom: '2rem'
-        }}>
-          {project.fullDescription || project.description}
-        </p>
+          <p className="project-detail-desc">
+            {project.fullDescription || project.description}
+          </p>
 
-        {(project.url || project.github) && (
-          <div className="flex gap-4" style={{ flexWrap: 'wrap' }}>
-            {project.url && (
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.6rem 1.2rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                Visitar Sitio
-              </a>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn"
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '0.5rem',
-                  background: 'white', color: '#111',
-                  border: '1px solid var(--color-border)',
-                  padding: '0.6rem 1.2rem',
-                  boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                Ver Código
-              </a>
-            )}
+          {(project.url || project.github) && (
+            <div className="project-detail-links">
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                  Visitar Sitio
+                </a>
+              )}
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  Ver Código
+                </a>
+              )}
+            </div>
+          )}
+        </header>
+
+        {project.video && (
+          <div className="project-detail-media reveal">
+            <video
+              src={project.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+            />
           </div>
         )}
-      </header>
 
-      {project.image && (
-        <div style={{ marginBottom: '4rem' }}>
-          <img
-            src={project.image}
-            alt={`Imagen principal de ${project.name}`}
-            style={{
-              width: '100%',
-              borderRadius: '12px',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-              border: '1px solid var(--color-border)'
-            }}
-          />
-        </div>
-      )}
-
-      {project.video && (
-        <div style={{ marginBottom: '4rem' }}>
-          <video
-            src={project.video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls
-            style={{
-              width: '100%',
-              borderRadius: '12px',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-              border: '1px solid var(--color-border)',
-              backgroundColor: 'var(--color-bg-subtle)'
-            }}
-          />
-        </div>
-      )}
-
-      {project.mockups && project.mockups.length > 0 && (
-        <div style={{ marginBottom: '2rem' }}>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--color-text)' }}>Galería</h3>
-          {project.mockups.length === 1 ? (
+        {project.image && (
+          <div className="project-detail-media reveal">
             <img
-              src={project.mockups[0]}
-              alt={`Mockup 1 de ${project.name}`}
-              style={{
-                width: '100%',
-                borderRadius: '8px',
-                border: '1px solid var(--color-border)',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-              }}
+              src={project.image}
+              alt={`Imagen principal de ${project.name}`}
             />
-          ) : (
-            <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <div style={{ width: '100%', overflow: 'hidden', paddingBottom: '10px' }}>
-                <div style={{
-                  display: 'flex',
-                  gap: '10px',
-                  transition: 'transform 0.5s ease-in-out',
-                  transform: `translateX(calc(-${currentImageIndex * 100}% - ${currentImageIndex * 10}px))`
-                }}>
-                  {project.mockups.map((mockup, i) => (
-                    <img
+          </div>
+        )}
+
+        {project.mockups && project.mockups.length > 0 && (
+          <div className="project-detail-gallery reveal">
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Galería</h3>
+
+            {project.mockups.length === 1 ? (
+              <div className="card-shell">
+                <img
+                  src={project.mockups[0]}
+                  alt={`Mockup 1 de ${project.name}`}
+                  style={{
+                    width: '100%',
+                    borderRadius: 'calc(var(--card-radius) - 6px)',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            ) : (
+              <>
+                <div className="project-gallery-slider">
+                  <div
+                    className="project-gallery-track"
+                    style={{
+                      transform: `translateX(calc(-${currentImageIndex * 100}% - ${currentImageIndex * 10}px))`,
+                    }}
+                  >
+                    {project.mockups.map((mockup, i) => (
+                      <img
+                        key={i}
+                        src={mockup}
+                        alt={`Mockup ${i + 1} de ${project.name}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="project-gallery-dots">
+                  {project.mockups.map((_, i) => (
+                    <button
                       key={i}
-                      src={mockup}
-                      alt={`Mockup ${i + 1} de ${project.name}`}
-                      style={{
-                        width: '100%',
-                        flexShrink: 0,
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                        border: '1px solid var(--color-border)',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
-                      }}
+                      onClick={() => setCurrentImageIndex(i)}
+                      className={`project-gallery-dot ${currentImageIndex === i ? 'is-active' : ''}`}
+                      aria-label={`Ir a la imagen ${i + 1}`}
                     />
                   ))}
                 </div>
-              </div>
-              <div style={{ display: 'flex', gap: '0.8rem', marginTop: '0.5rem', justifyContent: 'center' }}>
-                {project.mockups.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentImageIndex(i)}
-                    style={{
-                      width: '16px',
-                      height: '16px',
-                      borderRadius: '50%',
-                      padding: 0,
-                      border: '2px solid #9ca3af',
-                      backgroundColor: currentImageIndex === i ? '#9ca3af' : 'transparent',
-                      cursor: 'pointer',
-                      transition: 'background-color 0.3s ease'
-                    }}
-                    aria-label={`Ir a la imagen ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </article>
+              </>
+            )}
+          </div>
+        )}
+      </article>
+    </div>
   );
 };
 
