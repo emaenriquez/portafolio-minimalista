@@ -73,6 +73,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #root {
@@ -331,7 +332,7 @@ body {
    ═══════════════════════════════════════════════ */
 .page-content {
   flex: 1;
-  padding: 0rem 4rem 6rem;
+  padding: 0rem 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -616,8 +617,8 @@ a {
   grid-template-rows: auto auto;
   align-items: center;
   gap: 2rem 4rem;
-  padding: 4rem 0 2rem;
-  min-height: 70vh;
+  padding: 2rem 0;
+  min-height: calc(100vh - 200px);
 }
 
 .hero-text {
