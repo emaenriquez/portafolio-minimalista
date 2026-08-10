@@ -12,11 +12,6 @@ const Layout = ({ children }) => {
         <main className="page-content page-enter" key={location.pathname}>
           {children}
         </main>
-        <footer className="footer">
-          <p style={{ margin: 0, color: 'var(--text-muted)' }}>
-            © {new Date().getFullYear()} Emanuel Enriquez. Todos los derechos reservados.
-          </p>
-        </footer>
       </div>
     </div>
   );
