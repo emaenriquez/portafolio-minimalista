@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import portfolioData from '../data/portfolio.json';
 import useReveal from '../hooks/useReveal';
 
@@ -11,8 +10,8 @@ const HomePage = () => {
   const nameParts = name.split(' ');
 
   return (
-    <div ref={revealRef}>
-      <section className="hero">
+    <section id="inicio" ref={revealRef}>
+      <div className="hero">
         <div className="hero-text reveal">
           <div className="eyebrow">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -60,7 +59,7 @@ const HomePage = () => {
 
         <div className="hero-buttons reveal">
           {email && (
-            <a href={`mailto:${email}`} className="btn btn-primary">
+            <a href="#contacto" className="btn btn-primary">
               Contactar
               <span className="btn-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -86,8 +85,8 @@ const HomePage = () => {
             </a>
           )}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

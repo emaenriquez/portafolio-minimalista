@@ -8,7 +8,7 @@ const SkillsPage = () => {
   const revealRef = useReveal();
 
   return (
-    <div ref={revealRef} className="section">
+    <section id="skills" ref={revealRef} className="section">
       {/* Education Section */}
       <div className="section-header reveal">
         <div className="eyebrow">Formación Académica</div>
@@ -68,7 +68,7 @@ const SkillsPage = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

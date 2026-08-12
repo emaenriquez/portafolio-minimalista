@@ -7,7 +7,7 @@ const AboutPage = () => {
   const { name, location, email, linkedin, github } = portfolioData.personal;
 
   return (
-    <div ref={revealRef} className="section">
+    <section id="sobre-mi" ref={revealRef} className="section">
       <div className="section-header reveal">
         <div className="eyebrow">Conóceme</div>
         <h1>Sobre Mí</h1>
@@ -90,7 +90,7 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

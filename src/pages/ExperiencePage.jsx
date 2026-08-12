@@ -6,7 +6,7 @@ const ExperiencePage = () => {
   const revealRef = useReveal();
 
   return (
-    <div ref={revealRef} className="section">
+    <section id="experiencia" ref={revealRef} className="section">
       <div className="section-header reveal">
         <div className="eyebrow">Trayectoria Profesional</div>
         <h1>Experiencia</h1>
@@ -31,7 +31,7 @@ const ExperiencePage = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

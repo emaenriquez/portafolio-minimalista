@@ -41,7 +41,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div ref={revealRef} className="section">
+    <section id="contacto" ref={revealRef} className="section">
       <div className="section-header reveal" style={{ textAlign: 'center' }}>
         <div className="eyebrow" style={{ margin: '0 auto 1.5rem' }}>Hablemos</div>
         <h1>Contacto</h1>
@@ -146,7 +146,7 @@ const ContactPage = () => {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
