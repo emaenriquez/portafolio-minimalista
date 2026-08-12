@@ -1,18 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navItems = [
-  { to: '/', label: 'Inicio' },
-  { to: '/about', label: 'Sobre mí' },
-  { to: '/experience', label: 'Experiencia' },
-  { to: '/skills', label: 'Educación & Skills' },
-  { to: '/projects', label: 'Proyectos' },
-  { to: '/contact', label: 'Contacto' },
+  { href: '#inicio', label: 'Inicio' },
+  { href: '#sobre-mi', label: 'Sobre mí' },
+  { href: '#experiencia', label: 'Experiencia' },
+  { href: '#skills', label: 'Educación & Skills' },
+  { href: '#proyectos', label: 'Proyectos' },
+  { href: '#contacto', label: 'Contacto' },
 ];
+
+const sectionIds = navItems.map((item) => item.href.slice(1));
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('inicio');
   const location = useLocation();
+  const navigate = useNavigate();
+  const isLandingPage = location.pathname === '/';
+
+  // Scroll spy: track which section is in view
+  useEffect(() => {
+    if (!isLandingPage) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    );
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [isLandingPage]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -25,33 +59,55 @@ const Navbar = () => {
     document.body.style.overflow = !isOpen ? 'hidden' : '';
   };
 
+  const handleNavClick = useCallback(
+    (e, href) => {
+      if (!isLandingPage) {
+        // We're on ProjectDetail or other page — navigate back to landing + hash
+        e.preventDefault();
+        navigate('/' + href);
+      }
+      // If on landing page, default anchor behavior handles the scroll
+      setIsOpen(false);
+      document.body.style.overflow = '';
+    },
+    [isLandingPage, navigate]
+  );
+
   return (
     <>
       <nav className="navbar">
-        <NavLink to="/" className="navbar-logo">
+        <a
+          href="#inicio"
+          className="navbar-logo"
+          onClick={(e) => handleNavClick(e, '#inicio')}
+        >
           EE<span className="navbar-logo-dot"></span>
-        </NavLink>
+        </a>
 
         <ul className="navbar-links">
           {navItems.map((item) => (
-            <li key={item.to}>
-              <NavLink
-                to={item.to}
-                className={({ isActive }) => isActive ? 'active' : ''}
-                end={item.to === '/'}
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className={isLandingPage && activeSection === item.href.slice(1) ? 'active' : ''}
+                onClick={(e) => handleNavClick(e, item.href)}
               >
                 {item.label}
-              </NavLink>
+              </a>
             </li>
           ))}
         </ul>
 
-        <NavLink to="/contact" className="navbar-cta navbar-cta-desktop">
+        <a
+          href="#contacto"
+          className="navbar-cta navbar-cta-desktop"
+          onClick={(e) => handleNavClick(e, '#contacto')}
+        >
           Hablemos
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
-        </NavLink>
+        </a>
 
         <button
           className={`hamburger ${isOpen ? 'is-open' : ''}`}
@@ -67,18 +123,14 @@ const Navbar = () => {
       {/* Mobile menu overlay */}
       <div className={`mobile-menu-overlay ${isOpen ? 'is-open' : ''}`}>
         {navItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            className={({ isActive }) => isActive ? 'active' : ''}
-            end={item.to === '/'}
-            onClick={() => {
-              setIsOpen(false);
-              document.body.style.overflow = '';
-            }}
+          <a
+            key={item.href}
+            href={item.href}
+            className={isLandingPage && activeSection === item.href.slice(1) ? 'active' : ''}
+            onClick={(e) => handleNavClick(e, item.href)}
           >
             {item.label}
-          </NavLink>
+          </a>
         ))}
       </div>
     </>

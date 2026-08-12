@@ -22,7 +22,7 @@ const ProjectDetail = () => {
   return (
     <div ref={revealRef}>
       <article className="project-detail page-enter">
-        <Link to="/projects" className="project-detail-back reveal">
+        <Link to="/#proyectos" className="project-detail-back reveal">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
