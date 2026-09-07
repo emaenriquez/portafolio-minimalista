@@ -15,8 +15,8 @@ const LandingPage = () => (
     <HomePage />
     <AboutPage />
     <ExperiencePage />
-    <SkillsPage />
     <ProjectsPage />
+    <SkillsPage />
     <ContactPage />
   </>
 );

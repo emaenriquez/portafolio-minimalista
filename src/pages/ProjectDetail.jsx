@@ -32,13 +32,36 @@ const ProjectDetail = () => {
         <header className="reveal" style={{ marginBottom: '2.5rem' }}>
           <h1 className="project-detail-title">{project.name}</h1>
 
-          {project.role && (
-            <span className="project-detail-role">{project.role}</span>
-          )}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+            {project.role && (
+              <span className="project-detail-role" style={{ marginBottom: 0 }}>{project.role}</span>
+            )}
+            {project.status && (
+              <span className={`project-status-badge project-status-badge--${project.status.toLowerCase()}`}>
+                {project.status}
+              </span>
+            )}
+          </div>
 
           <p className="project-detail-desc">
             {project.fullDescription || project.description}
           </p>
+
+          {project.techStack && (
+            <div className="project-tech-stack reveal">
+              <h3>Stack Tecnológico</h3>
+              {Object.entries(project.techStack).map(([group, items]) => (
+                <div key={group} className="project-tech-group">
+                  <div className="project-tech-group-label">{group}</div>
+                  <div className="project-tech-tags">
+                    {items.map((tech) => (
+                      <span key={tech} className="project-tech-tag">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           {(project.url || project.github) && (
             <div className="project-detail-links">
