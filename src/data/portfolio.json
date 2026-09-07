@@ -14,7 +14,12 @@
       "company": "TechX",
       "role": "Desarrollador Full Stack",
       "dates": "Junio 2025 - Presente",
-      "description": "Participo en la construcción y mantenimiento de soluciones web end-to-end para clientes internacionales. Trabajo bajo metodologías ágiles junto a equipos de IA, QA y Diseño. - Logros destacados: Desarrollo de módulos para un sistema OCR asistido por IA (procesamiento y renderizado de datos JSON), creación de una plataforma interna de analítica (KPIs) para Team Leaders, y mantenimiento Full Stack asegurando la alta disponibilidad y resolución de bugs críticos."
+      "description": "Participo en la construcción y mantenimiento de soluciones web end-to-end para clientes internacionales. Trabajo bajo metodologías ágiles junto a equipos de IA, QA y Diseño.",
+      "highlights": [
+        "Desarrollo y implementacion de módulos para el sistema de martinez group OCR",
+        "Creación de una plataforma interna de analítica (KPIs) para Team Leaders",
+        "Mantenimiento Full Stack asegurando la alta disponibilidad y resolución de bugs críticos"
+      ]
     },
     {
       "company": "Silman Digital",
