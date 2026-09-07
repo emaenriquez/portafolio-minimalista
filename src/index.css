@@ -1195,6 +1195,103 @@ a {
   border-color: var(--accent);
 }
 
+/* Status Badge */
+.project-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.project-status-badge--beta {
+  background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+  color: #0d47a1;
+  animation: pulse-beta 2.5s ease-in-out infinite;
+}
+
+.project-status-badge--beta::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1565c0;
+  animation: blink-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-beta {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(21, 101, 192, 0.15); }
+  50% { box-shadow: 0 0 0 6px rgba(21, 101, 192, 0); }
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Tech Stack Section */
+.project-tech-stack {
+  margin-bottom: 2rem;
+}
+
+.project-tech-stack h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.project-tech-group {
+  margin-bottom: 1rem;
+}
+
+.project-tech-group-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.project-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-tech-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--card-border);
+  transition: all var(--duration-fast) var(--ease-fluid);
+}
+
+.project-tech-tag:hover {
+  border-color: var(--accent);
+  background: var(--tag-yellow-bg);
+  transform: translateY(-1px);
+}
+
+/* Card header with badge positioning */
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
 /* ═══════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════ */

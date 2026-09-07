@@ -32,11 +32,18 @@ const ProjectsPage = () => {
               )}
 
               <div className="project-card-content">
-                {project.role && (
-                  <span className="tag tag-yellow" style={{ marginBottom: '0.75rem' }}>
-                    {project.role}
-                  </span>
-                )}
+                <div className="project-card-header">
+                  {project.role && (
+                    <span className="tag tag-yellow">
+                      {project.role}
+                    </span>
+                  )}
+                  {project.status && (
+                    <span className={`project-status-badge project-status-badge--${project.status.toLowerCase()}`}>
+                      {project.status}
+                    </span>
+                  )}
+                </div>
 
                 <h3 className="project-card-title">
                   <Link to={`/project/${project.slug}`}>{project.name}</Link>
