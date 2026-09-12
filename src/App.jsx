@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -22,6 +22,21 @@ const LandingPage = () => (
 );
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const timer = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
   return (
     <Layout>
       <Routes>

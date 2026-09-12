@@ -14,9 +14,9 @@ const AboutPage = () => {
       </div>
 
       <div className="about-grid">
-        <div className="reveal">
-          <div className="card-shell">
-            <div className="card-core" style={{ padding: '2.5rem' }}>
+        <div className="reveal" style={{ height: '100%' }}>
+          <div className="card-shell" style={{ height: '100%' }}>
+            <div className="card-core" style={{ padding: '2.5rem', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <p className="about-text" style={{ margin: 0 }}>
                 {portfolioData.about}
               </p>
