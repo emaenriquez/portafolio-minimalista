@@ -25,7 +25,7 @@ const HomePage = () => {
             <span className="hero-title-accent">{nameParts.slice(1).join(' ')}</span>
           </h1>
 
-          {/* <p className="hero-subtitle">{title}</p> */}
+          <p className="hero-subtitle">{title}</p>
         </div>
 
         <div className="hero-image-wrapper reveal">
