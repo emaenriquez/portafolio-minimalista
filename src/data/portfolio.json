@@ -55,15 +55,16 @@
       "slug": "rag-chat-ia",
       "description": "Aplicación web que permite a los usuarios subir documentos y mantener conversaciones contextuales con IA mediante Retrieval-Augmented Generation (RAG).",
       "fullDescription": "Aplicación Full Stack que combina Retrieval-Augmented Generation (RAG) con un chat conversacional potenciado por Google Gemini. Los usuarios pueden subir archivos (PDF, TXT, DOCX, entre otros), los cuales son procesados, fragmentados y almacenados como embeddings vectoriales en PostgreSQL con pgvector. Al chatear, el sistema recupera los fragmentos más relevantes del documento y los inyecta como contexto en el prompt de Gemini, generando respuestas precisas y fundamentadas en la información del usuario. El almacenamiento de archivos se gestiona a través de Cloudflare R2, la API REST está documentada con Swagger y la validación de datos se maneja con Zod.",
+      "availabilityNotice": "⚠️ Este proyecto está desplegado pero puede no estar disponible en todo momento. Si deseas probarlo, contáctame a emaenriquez1985@gmail.com y lo activo para ti.",
       "techStack": {
         "frontend": ["React.js", "React Router", "Tailwind CSS", "Vite"],
         "backend": ["Node.js", "Express 5", "TypeScript", "Prisma 7", "PostgreSQL + pgvector", "Google Generative AI (Gemini)", "Cloudflare R2", "Swagger", "Zod"]
       },
       "status": "Beta",
       "role": "Desarrollo Full Stack",
-      "video": "/mockupchatia.mp4",
-      "mockups": ["/ragchat.jpg"],
-      "url": "",
+      "video": "/rag_chat_ia_linkedin.mp4",
+      "mockups": ["/proyecto.png","/api_docs.png"],
+      "url": "https://rag-chat-ia.vercel.app/login",
       "github": "https://github.com/emaenriquez/rag-chat-ia"
     }
   ],

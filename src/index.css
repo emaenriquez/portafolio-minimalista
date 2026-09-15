@@ -1276,7 +1276,6 @@ a {
 .project-detail-media {
   margin-bottom: 3rem;
   width: 100%;
-  max-width: 100%;
   overflow: hidden;
   border-radius: var(--card-radius);
   border: 1px solid var(--card-border);
@@ -1290,7 +1289,6 @@ a {
 .project-detail-media video,
 .project-detail-media img {
   width: 100%;
-  max-width: 100%;
   height: auto;
   max-height: 75vh;
   object-fit: contain;

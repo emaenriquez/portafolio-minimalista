@@ -43,6 +43,38 @@ const ProjectDetail = () => {
             )}
           </div>
 
+          {project.availabilityNotice && (
+            <div className="project-availability-notice" style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '0.75rem',
+              background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.06))',
+              border: '1px solid rgba(245, 158, 11, 0.35)',
+              borderLeft: '4px solid #f59e0b',
+              borderRadius: '10px',
+              padding: '1rem 1.25rem',
+              marginBottom: '1.5rem',
+              fontSize: '0.9rem',
+              lineHeight: '1.6',
+              color: 'var(--text-secondary)',
+            }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '2px' }}>
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+              <span>
+                {project.availabilityNotice.replace('emaenriquez1985@gmail.com', '').replace('⚠️ ', '')}
+                <a
+                  href="mailto:emaenriquez1985@gmail.com"
+                  style={{ color: '#f59e0b', fontWeight: 600, textDecoration: 'underline' }}
+                >
+                  emaenriquez1985@gmail.com
+                </a>
+              </span>
+            </div>
+          )}
+
           <p className="project-detail-desc">
             {project.fullDescription || project.description}
           </p>
